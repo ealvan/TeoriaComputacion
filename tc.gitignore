@@ -1,0 +1,5 @@
+lex.yy.c
+run
+*.out
+*.o
+

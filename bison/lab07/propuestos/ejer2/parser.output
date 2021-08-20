@@ -1,0 +1,150 @@
+State 2 conflicts: 2 shift/reduce
+State 6 conflicts: 1 shift/reduce
+State 8 conflicts: 1 shift/reduce
+State 9 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: cadena $end
+
+    1 cadena: exp FIN
+
+    2 exp: %empty
+    3    | exp AIM BIM AIM BIM
+
+    4 AIM: %empty
+    5    | A
+
+    6 BIM: %empty
+    7    | B
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    error (256)
+    A (258) 5
+    B (259) 7
+    FIN (260) 1
+
+
+Nonterminals, with rules where they appear
+
+    $accept (6)
+        on left: 0
+    cadena (7)
+        on left: 1
+        on right: 0
+    exp (8)
+        on left: 2 3
+        on right: 1 3
+    AIM (9)
+        on left: 4 5
+        on right: 3
+    BIM (10)
+        on left: 6 7
+        on right: 3
+
+
+State 0
+
+    0 $accept: . cadena $end
+
+    $default  reduce using rule 2 (exp)
+
+    cadena  go to state 1
+    exp     go to state 2
+
+
+State 1
+
+    0 $accept: cadena . $end
+
+    $end  shift, and go to state 3
+
+
+State 2
+
+    1 cadena: exp . FIN
+    3 exp: exp . AIM BIM AIM BIM
+
+    A    shift, and go to state 4
+    FIN  shift, and go to state 5
+
+    A         [reduce using rule 4 (AIM)]
+    FIN       [reduce using rule 4 (AIM)]
+    $default  reduce using rule 4 (AIM)
+
+    AIM  go to state 6
+
+
+State 3
+
+    0 $accept: cadena $end .
+
+    $default  accept
+
+
+State 4
+
+    5 AIM: A .
+
+    $default  reduce using rule 5 (AIM)
+
+
+State 5
+
+    1 cadena: exp FIN .
+
+    $default  reduce using rule 1 (cadena)
+
+
+State 6
+
+    3 exp: exp AIM . BIM AIM BIM
+
+    B  shift, and go to state 7
+
+    B         [reduce using rule 6 (BIM)]
+    $default  reduce using rule 6 (BIM)
+
+    BIM  go to state 8
+
+
+State 7
+
+    7 BIM: B .
+
+    $default  reduce using rule 7 (BIM)
+
+
+State 8
+
+    3 exp: exp AIM BIM . AIM BIM
+
+    A  shift, and go to state 4
+
+    A         [reduce using rule 4 (AIM)]
+    $default  reduce using rule 4 (AIM)
+
+    AIM  go to state 9
+
+
+State 9
+
+    3 exp: exp AIM BIM AIM . BIM
+
+    B  shift, and go to state 7
+
+    B         [reduce using rule 6 (BIM)]
+    $default  reduce using rule 6 (BIM)
+
+    BIM  go to state 10
+
+
+State 10
+
+    3 exp: exp AIM BIM AIM BIM .
+
+    $default  reduce using rule 3 (exp)

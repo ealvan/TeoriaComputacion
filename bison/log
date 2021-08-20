@@ -1,0 +1,10 @@
+/*
+cadena: exp FIN  {printf("Es correcto\n");} 
+;
+exp: |exp AIM BIM AIM BIM
+;
+AIM: |A 
+;
+BIM: |B 
+;
+*/

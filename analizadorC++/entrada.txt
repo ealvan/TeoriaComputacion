@@ -1,0 +1,10 @@
+int main () 
+{
+    /*Haciendo mi test */
+    cout<<"Hola,mundo";
+    int a = 12;
+    double m = 12.121;
+    cout << m << endl;
+    cout << a << endl;
+    return 0;
+}
